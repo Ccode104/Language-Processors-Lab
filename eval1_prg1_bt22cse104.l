@@ -29,8 +29,25 @@ integer [ =]([0-9])+[ ,;]
 
 /* User Code */
 
-int main()
+int main(int argc , char *argv[])
 {
+	FILE *file = NULL;
+	
+	if(argc==1)
+	{
+		printf("Please enter the file name\n");
+		return 0;
+	}
+
+	file = fopen(argv[1],"r");
+	if(file != NULL)
+		yyin = file;
+	else
+	{
+		printf("File does not exist\n");
+		return 0;
+	}
+
 	yylex();
 	printf("Number of integers is %d\n",no_of_integers);
 	printf("Number of floats is %d\n",no_of_floats);
