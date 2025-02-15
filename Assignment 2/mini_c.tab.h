@@ -140,14 +140,6 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-/*
-struct symtab {
-   char *name;
-   double (*funcptr)();
-   duble value;
-}  symtab [SIZE];
-
-struct symtab *symlook();
-*/
+int lineno;
 
 #endif /* !YY_YY_Y_TAB_H_INCLUDED  */

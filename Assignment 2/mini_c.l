@@ -52,7 +52,8 @@ int lineno = 0;
     /* Section 4 - Ignored elements */
 "//"[^\n]*          { /* Skip single-line comments */ }
 "/\*"([^*]|\*+[^*/])*\*+"/"   { /* Skip multi-line comments */ }
-[ \t\n]+            { /* Ignore whitespace */ }
+[ \t]+            { /* Ignore whitespace */ }
+\n                  {lineno++;}
 .                   { printf("Unexpected character: %s\n", yytext); }
 
 %%

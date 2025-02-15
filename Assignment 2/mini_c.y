@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+extern int lineno;
 
 	/* It is executed when there is an error while parsing */
 void yyerror(const char *s);
@@ -154,10 +155,11 @@ expression:
 %%
 
 void yyerror(const char *s) {
-    	fprintf(stderr, "Syntax error: %s at %d\n", s,yylineno);
+    	fprintf(stderr, "Syntax error: %s at %d \nUnexpected symbol : %s\n", s,lineno,yylval.id);
 }
 
-int main(void) {
+int main() 
+{
     	FILE *file = fopen("input.txt", "r");
     	if (!file) {
         	perror("Error opening input.txt");
@@ -168,7 +170,8 @@ int main(void) {
     	// Parsing Function
     	yyparse();
     
-	fclose(file);
+	    fclose(file);
+
     	printf("Parsing done successfully\n");
     	return 0;
 }
