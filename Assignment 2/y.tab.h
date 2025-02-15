@@ -121,7 +121,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 10 "mini_c.y"
+#line 22 "parser.y"
 
     int num;
     char *id;
@@ -140,6 +140,5 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-int lineno;
 
 #endif /* !YY_YY_Y_TAB_H_INCLUDED  */

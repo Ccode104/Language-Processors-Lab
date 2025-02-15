@@ -488,11 +488,11 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "mini_c.l"
-#line 2 "mini_c.l"
+#line 1 "lexer.l"
+#line 2 "lexer.l"
     /*Definition Section*/
 
-#include "mini_c.tab.h"  // This will make the lexer know the token names ('DEFINE',...)
+#include "y.tab.h"  // This will make the lexer know the token names ('DEFINE',...)
 #include <stdlib.h> 
 #include <string.h>
 int lineno = 0;
@@ -714,9 +714,9 @@ YY_DECL
 		}
 
 	{
-#line 10 "mini_c.l"
+#line 10 "lexer.l"
 
-#line 12 "mini_c.l"
+#line 12 "lexer.l"
     /* Section 1 - They are not associated with values in the pair <token name, token value> */
     /* Also, they are put first since we do not want them to match other REGEX */ 
 
@@ -779,184 +779,184 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 15 "mini_c.l"
+#line 15 "lexer.l"
 { printf("%s [DEFINE]\n", yytext); return DEFINE; }     // Identify the MACRO DEFINE
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 16 "mini_c.l"
+#line 16 "lexer.l"
 { printf("%s [INCLUDE]\n", yytext); return INCLUDE; }     // Identify the preprocessor directive 'include'
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 17 "mini_c.l"
+#line 17 "lexer.l"
 { printf("%s [DIRECTIVE]\n", yytext); return DIRECTIVE; }  // The argument for #include (the header file) - enclosed within <>
 	YY_BREAK
 /* Data Types */
 case 4:
 YY_RULE_SETUP
-#line 20 "mini_c.l"
+#line 20 "lexer.l"
 { printf("%s [DATATYPE]\n", yytext); return DATATYPE; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 21 "mini_c.l"
+#line 21 "lexer.l"
 { printf("%s [DATATYPE]\n", yytext); return DATATYPE; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 22 "mini_c.l"
+#line 22 "lexer.l"
 { printf("%s [DATATYPE]\n", yytext); return DATATYPE; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 23 "mini_c.l"
+#line 23 "lexer.l"
 { printf("%s [DATATYPE]\n", yytext); return DATATYPE; }
 	YY_BREAK
 /* Keywords */
 case 8:
 YY_RULE_SETUP
-#line 26 "mini_c.l"
+#line 26 "lexer.l"
 { printf("%s [IF]\n", yytext); return IF; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 27 "mini_c.l"
+#line 27 "lexer.l"
 { printf("%s [ELSE]\n", yytext); return ELSE; }
 	YY_BREAK
 /* Section 2 - Tokens with associated values */
 case 10:
 YY_RULE_SETUP
-#line 30 "mini_c.l"
+#line 30 "lexer.l"
 { printf("%s [NUMBER]\n", yytext); yylval.num = atoi(yytext); return NUMBER; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 31 "mini_c.l"
+#line 31 "lexer.l"
 { printf("%s [IDENTIFIER]\n", yytext); yylval.id = strdup(yytext); return IDENTIFIER; }
 	YY_BREAK
 /* Section 3 - Operators and Symbols (No associated value) */
 case 12:
 YY_RULE_SETUP
-#line 34 "mini_c.l"
+#line 34 "lexer.l"
 { printf("%s [PLUS]\n", yytext); return PLUS; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 35 "mini_c.l"
+#line 35 "lexer.l"
 { printf("%s [MINUS]\n", yytext); return MINUS; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 36 "mini_c.l"
+#line 36 "lexer.l"
 { printf("%s [MUL]\n", yytext); return MUL; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 37 "mini_c.l"
+#line 37 "lexer.l"
 { printf("%s [DIV]\n", yytext); return DIV; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 38 "mini_c.l"
+#line 38 "lexer.l"
 { printf("%s [MOD]\n", yytext); return MOD; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 39 "mini_c.l"
+#line 39 "lexer.l"
 { printf("%s [COMMA]\n", yytext); return COMMA; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 40 "mini_c.l"
+#line 40 "lexer.l"
 { printf("%s [ASSIGN]\n", yytext); return ASSIGN; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 41 "mini_c.l"
+#line 41 "lexer.l"
 { printf("%s [SEMICOLON]\n", yytext); return SEMICOLON; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 42 "mini_c.l"
+#line 42 "lexer.l"
 { printf("%s [LPAREN]\n", yytext); return LPAREN; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 43 "mini_c.l"
+#line 43 "lexer.l"
 { printf("%s [RPAREN]\n", yytext); return RPAREN; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 44 "mini_c.l"
+#line 44 "lexer.l"
 { printf("%s [LBRACE]\n", yytext); return LBRACE; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 45 "mini_c.l"
+#line 45 "lexer.l"
 { printf("%s [RBRACE]\n", yytext); return RBRACE; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 46 "mini_c.l"
+#line 46 "lexer.l"
 { printf("%s [EQ]\n", yytext); return EQ; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 47 "mini_c.l"
+#line 47 "lexer.l"
 { printf("%s [NEQ]\n", yytext); return NEQ; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 48 "mini_c.l"
+#line 48 "lexer.l"
 { printf("%s [LT]\n", yytext); return LT; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 49 "mini_c.l"
+#line 49 "lexer.l"
 { printf("%s [GT]\n", yytext); return GT; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 50 "mini_c.l"
+#line 50 "lexer.l"
 { printf("%s [LEQ]\n", yytext); return LEQ; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 51 "mini_c.l"
+#line 51 "lexer.l"
 { printf("%s [GEQ]\n", yytext); return GEQ; }
 	YY_BREAK
 /* Section 4 - Ignored elements */
 case 30:
 YY_RULE_SETUP
-#line 54 "mini_c.l"
+#line 54 "lexer.l"
 { /* Skip single-line comments */ }
 	YY_BREAK
 case 31:
 /* rule 31 can match eol */
 YY_RULE_SETUP
-#line 55 "mini_c.l"
+#line 55 "lexer.l"
 { /* Skip multi-line comments */ }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 56 "mini_c.l"
+#line 56 "lexer.l"
 { /* Ignore whitespace */ }
 	YY_BREAK
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
-#line 57 "mini_c.l"
+#line 57 "lexer.l"
 {lineno++;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 58 "mini_c.l"
+#line 58 "lexer.l"
 { printf("Unexpected character: %s\n", yytext); }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 60 "mini_c.l"
+#line 60 "lexer.l"
 ECHO;
 	YY_BREAK
 #line 963 "lex.yy.c"
@@ -1964,7 +1964,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 60 "mini_c.l"
+#line 60 "lexer.l"
 
 
 // This function decides what to do when we reach EOF

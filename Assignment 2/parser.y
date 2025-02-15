@@ -8,7 +8,7 @@
 extern int lineno;
 
 	/* It is executed when there is an error while parsing */
-void yyerror(const char *s);
+int yyerror(const char *s);
 
 	/* The Lexer Function */
 int yylex();
@@ -154,13 +154,14 @@ expression:
 
 %%
 
-void yyerror(const char *s) {
+int yyerror(const char *s) {
     	fprintf(stderr, "Syntax error: %s at %d \nUnexpected symbol : %s\n", s,lineno,yylval.id);
+        return 1;
 }
 
 int main() 
 {
-    	FILE *file = fopen("input.txt", "r");
+    	FILE *file = fopen("input.c", "r");
     	if (!file) {
         	perror("Error opening input.txt");
         	return 1;
@@ -168,10 +169,12 @@ int main()
     	yyin = file; // Redirect input to file
     
     	// Parsing Function
-    	yyparse();
+    	int flag = yyparse();
     
 	    fclose(file);
 
-    	printf("Parsing done successfully\n");
-    	return 0;
+        if(flag == 0)
+    	   printf("Success: The Mini-C program is syntactically correct.\n");
+    	
+        return 0;
 }

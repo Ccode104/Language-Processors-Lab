@@ -67,7 +67,7 @@
 
 
 /* First part of user prologue.  */
-#line 1 "mini_c.y"
+#line 1 "parser.y"
 
     	/*Definition Section*/
 
@@ -78,7 +78,7 @@
 extern int lineno;
 
 	/* It is executed when there is an error while parsing */
-void yyerror(const char *s);
+int yyerror(const char *s);
 
 	/* The Lexer Function */
 int yylex();
@@ -110,7 +110,10 @@ extern FILE *yyin; // Input file
 #  endif
 # endif
 
-
+/* Use api.header.include to #include this header
+   instead of duplicating it here.  */
+#ifndef YY_YY_Y_TAB_H_INCLUDED
+# define YY_YY_Y_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -195,12 +198,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 22 "mini_c.y"
+#line 22 "parser.y"
 
     int num;
     char *id;
 
-#line 204 "y.tab.c"
+#line 207 "y.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -215,7 +218,7 @@ extern YYSTYPE yylval;
 int yyparse (void);
 
 
-
+#endif /* !YY_YY_Y_TAB_H_INCLUDED  */
 /* Symbol kind.  */
 enum yysymbol_kind_t
 {
@@ -1275,97 +1278,97 @@ yyreduce:
   switch (yyn)
     {
   case 28: /* T: T DIV F  */
-#line 129 "mini_c.y"
+#line 129 "parser.y"
             { (yyval.num) = (yyvsp[-2].num) / (yyvsp[0].num); }
-#line 1281 "y.tab.c"
+#line 1284 "y.tab.c"
     break;
 
   case 29: /* T: T MUL F  */
-#line 130 "mini_c.y"
+#line 130 "parser.y"
               { (yyval.num) = (yyvsp[-2].num) * (yyvsp[0].num); }
-#line 1287 "y.tab.c"
+#line 1290 "y.tab.c"
     break;
 
   case 30: /* T: F  */
-#line 131 "mini_c.y"
+#line 131 "parser.y"
         { (yyval.num)= (yyvsp[0].num); }
-#line 1293 "y.tab.c"
+#line 1296 "y.tab.c"
     break;
 
   case 31: /* F: IDENTIFIER  */
-#line 134 "mini_c.y"
+#line 134 "parser.y"
                {}
-#line 1299 "y.tab.c"
+#line 1302 "y.tab.c"
     break;
 
   case 32: /* F: NUMBER  */
-#line 135 "mini_c.y"
+#line 135 "parser.y"
              { (yyval.num) = (yyvsp[0].num); }
-#line 1305 "y.tab.c"
+#line 1308 "y.tab.c"
     break;
 
   case 33: /* F: LPAREN expression RPAREN  */
-#line 136 "mini_c.y"
+#line 136 "parser.y"
                                { (yyval.num) = (yyvsp[-1].num); }
-#line 1311 "y.tab.c"
+#line 1314 "y.tab.c"
     break;
 
   case 34: /* expression: expression PLUS T  */
-#line 141 "mini_c.y"
+#line 141 "parser.y"
                       { (yyval.num) = (yyvsp[-2].num) + (yyvsp[0].num); }
-#line 1317 "y.tab.c"
+#line 1320 "y.tab.c"
     break;
 
   case 35: /* expression: expression MINUS T  */
-#line 142 "mini_c.y"
+#line 142 "parser.y"
                          { (yyval.num) = (yyvsp[-2].num) - (yyvsp[0].num); }
-#line 1323 "y.tab.c"
+#line 1326 "y.tab.c"
     break;
 
   case 36: /* expression: expression EQ expression  */
-#line 143 "mini_c.y"
+#line 143 "parser.y"
                                { (yyval.num) = ((yyvsp[-2].num) == (yyvsp[0].num)); }
-#line 1329 "y.tab.c"
+#line 1332 "y.tab.c"
     break;
 
   case 37: /* expression: expression NEQ expression  */
-#line 144 "mini_c.y"
+#line 144 "parser.y"
                                 { (yyval.num) = ((yyvsp[-2].num) != (yyvsp[0].num)); }
-#line 1335 "y.tab.c"
+#line 1338 "y.tab.c"
     break;
 
   case 38: /* expression: expression LT expression  */
-#line 145 "mini_c.y"
+#line 145 "parser.y"
                                { (yyval.num) = ((yyvsp[-2].num) < (yyvsp[0].num)); }
-#line 1341 "y.tab.c"
+#line 1344 "y.tab.c"
     break;
 
   case 39: /* expression: expression GT expression  */
-#line 146 "mini_c.y"
+#line 146 "parser.y"
                                { (yyval.num) = ((yyvsp[-2].num) > (yyvsp[0].num)); }
-#line 1347 "y.tab.c"
+#line 1350 "y.tab.c"
     break;
 
   case 40: /* expression: expression LEQ expression  */
-#line 147 "mini_c.y"
+#line 147 "parser.y"
                                 { (yyval.num) = ((yyvsp[-2].num) <= (yyvsp[0].num)); }
-#line 1353 "y.tab.c"
+#line 1356 "y.tab.c"
     break;
 
   case 41: /* expression: expression GEQ expression  */
-#line 148 "mini_c.y"
+#line 148 "parser.y"
                                 { (yyval.num) = ((yyvsp[-2].num) >= (yyvsp[0].num)); }
-#line 1359 "y.tab.c"
+#line 1362 "y.tab.c"
     break;
 
   case 42: /* expression: T  */
-#line 149 "mini_c.y"
+#line 149 "parser.y"
         { (yyval.num) = (yyvsp[0].num); }
-#line 1365 "y.tab.c"
+#line 1368 "y.tab.c"
     break;
 
 
-#line 1369 "y.tab.c"
+#line 1372 "y.tab.c"
 
       default: break;
     }
@@ -1558,15 +1561,17 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 155 "mini_c.y"
+#line 155 "parser.y"
 
 
-void yyerror(const char *s) {
+int yyerror(const char *s) {
     	fprintf(stderr, "Syntax error: %s at %d \nUnexpected symbol : %s\n", s,lineno,yylval.id);
+        return 1;
 }
 
-int main(void) {
-    	FILE *file = fopen("input.txt", "r");
+int main() 
+{
+    	FILE *file = fopen("input.c", "r");
     	if (!file) {
         	perror("Error opening input.txt");
         	return 1;
@@ -1574,9 +1579,12 @@ int main(void) {
     	yyin = file; // Redirect input to file
     
     	// Parsing Function
-    	yyparse();
+    	int flag = yyparse();
     
-	fclose(file);
-    	printf("Parsing done successfully\n");
-    	return 0;
+	    fclose(file);
+
+        if(flag == 0)
+    	   printf("Success: The Mini-C program is syntactically correct.\n");
+    	
+        return 0;
 }

@@ -1,7 +1,7 @@
 %{
     /*Definition Section*/
 
-#include "mini_c.tab.h"  // This will make the lexer know the token names ('DEFINE',...)
+#include "y.tab.h"  // This will make the lexer know the token names ('DEFINE',...)
 #include <stdlib.h> 
 #include <string.h>
 int lineno = 0;
